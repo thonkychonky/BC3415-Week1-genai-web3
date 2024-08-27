@@ -67,11 +67,13 @@
 
     <div class="container">
         <h2>Welcome to Financial Robo Advisor</h2>
-        <p>May I know your name?</p>
-        <div class="input-group">
-            <input type="text" placeholder="Enter your name">
-        </div>
-        <button class="btn">Submit</button>
+        <form action="/ai_agent" method="post">
+            <input type="submit" value="AI Agent">
+        </form>
+
+        <form action="/prediction" method="post">
+            <input type="submit" value="prediction">
+        </form>
     </div>
 
 </body>
