@@ -1,14 +1,11 @@
 from flask import Flask,render_template,request
 import google.generativeai as palm
 import os
-import openai
 
 api = ""
 palm.configure(api_key=api)
 model = {"model": "models/chat-bison-001"}
 
-os.environ["OPENAI_API_KEY"] = ""
-client = openai.OpenAI()
 
 app = Flask(__name__)
 
