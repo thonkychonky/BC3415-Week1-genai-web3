@@ -19,12 +19,7 @@ def ai_agent():
 
 @app.route("/ai_agent_reply", methods=["GET","POST"])
 def ai_agent_reply():
-    q = request.form.get("q")
-    r = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": q}],
-    )
-    r = r.choices[0].message.content
+
     return(render_template("ai_agent_reply.html",r=r))
 
 @app.route("/prediction", methods=["GET","POST"])
