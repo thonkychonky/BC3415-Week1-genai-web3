@@ -1,11 +1,95 @@
-<h2>Financial AI Agent</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial AI Agent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-<form action="/ai_agent_reply" method="post">
-    <h4>Please enter your question : </h4>
-    <input type="text" name="q">
-    <input type="submit" value="Enter">
-</form>
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
 
-<form action="/" method="post">
-    <input type="submit" value="Main">
-</form>
+        h2 {
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        h4 {
+            color: #333333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .input-group input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn + .btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Financial AI Agent</h2>
+
+        <form action="/ai_agent_reply" method="post">
+            <h4>Please enter your question:</h4>
+            <div class="input-group">
+                <input type="text" name="q" placeholder="Type your question here...">
+            </div>
+            <input type="submit" value="Enter" class="btn">
+        </form>
+
+        <form action="/" method="post">
+            <input type="submit" value="Main" class="btn">
+        </form>
+    </div>
+
+</body>
+</html>
