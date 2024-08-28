@@ -1,10 +1,10 @@
 from flask import Flask,render_template,request
 from langchain_core.messages import HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
-
-api = input("api : ")
-
+import os
 import google.generativeai as genai
+
+api = os.getenv("API_KEY")
 genai.configure(api_key=api)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
