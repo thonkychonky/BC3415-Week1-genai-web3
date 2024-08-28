@@ -34,7 +34,17 @@ def ai_agent_reply():
 
 @app.route("/prediction", methods=["GET","POST"])
 def prediction():
-    return(render_template("index.html"))
+    return(render_template("index.html"))\
+
+@app.route("/sg_joke", methods=["GET","POST"])
+def sg_joke():
+    joke = None  # Initialize joke as None
+    
+    if request.method == "POST":
+        # When the form is submitted, set the joke
+        joke = "The only thing faster than Singapore's MRT during peak hours is the way we 'chope' seats with a tissue packet."
+    
+    return render_template("index.html", joke=joke)
 
 if __name__ == "__main__":
     app.run()
