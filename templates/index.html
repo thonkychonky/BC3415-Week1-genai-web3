@@ -74,6 +74,14 @@
         <form action="/prediction" method="post">
             <input type="submit" value="prediction">
         </form>
+
+        <form action="/sg_joke" method ="post">
+            <input type= "submit" value = "Click for an SG Joke">
+        </form>
+
+        {% if joke %}
+        <p>{{ joke }}</p>
+        {% endif %}
     </div>
 
 </body>
