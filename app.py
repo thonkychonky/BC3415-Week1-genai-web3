@@ -3,12 +3,23 @@ from langchain_core.messages import HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import google.generativeai as genai
+from textblob import TextBlob
 
 api = os.getenv("API_KEY")
+
 genai.configure(api_key=api)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 app = Flask(__name__)
+
+def analyze_sentiment(sentence):
+    analysis = TextBlob(sentence)
+    if analysis.sentiment.polarity > 0:
+        return "Positive"
+    elif analysis.sentiment.polarity < 0:
+        return "Negative"
+    else:
+        return "Neutral"
 
 @app.route("/", methods=["GET","POST"])
 def index():
@@ -34,7 +45,7 @@ def ai_agent_reply():
 
 @app.route("/prediction", methods=["GET","POST"])
 def prediction():
-    return(render_template("index.html"))\
+    return(render_template("index.html"))
 
 @app.route("/sg_joke", methods=["GET","POST"])
 def sg_joke():
@@ -45,6 +56,24 @@ def sg_joke():
         joke = "The only thing faster than Singapore's MRT during peak hours is the way we 'chope' seats with a tissue packet."
     
     return render_template("index.html", joke=joke)
+
+@app.route("/sentiment_analysis", methods=["GET", "POST"])
+def sentiment_analysis():
+    sentiment = None
+    if request.method == "POST":
+        sentence = request.form.get("sentence")  # Get the sentence from the form
+        if sentence:  # Check if the sentence is not None or empty
+            try:
+                sentiment = analyze_sentiment(sentence)  # Analyze the sentiment
+            except Exception as e:
+                print(f"Error during sentiment analysis: {e}")
+                sentiment = "An error occurred during analysis."
+        else:
+            sentiment = "Please enter a sentence."  # Provide feedback for empty input
+
+    # Render the template with the sentiment result
+    return render_template("sentiment_analysis.html", sentiment=sentiment)
+
 
 if __name__ == "__main__":
     app.run()
