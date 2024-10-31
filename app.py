@@ -5,7 +5,8 @@ import os
 import google.generativeai as genai
 from textblob import TextBlob
 
-api = os.getenv("API_KEY")
+# api = os.getenv("API_KEY")
+api = 'AIzaSyDBse3yBYD270Q_rI2z7j-pI6ytsAGfmhA'
 
 genai.configure(api_key=api)
 model = genai.GenerativeModel('gemini-1.5-flash')
@@ -73,6 +74,10 @@ def sentiment_analysis():
 
     # Render the template with the sentiment result
     return render_template("sentiment_analysis.html", sentiment=sentiment)
+
+@app.route("/paynow", methods=["GET","POST"])
+def paynow():
+    return(render_template("paynow.html"))
 
 
 if __name__ == "__main__":
